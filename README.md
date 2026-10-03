@@ -1,33 +1,47 @@
-# Lina Criativa — página de vendas
+# Lina Criativa — nova página para teste B
 
-Projeto completo para GitHub e Vercel: 21 arquivos, incluindo as 14 imagens da página. O contador corrigido e o Pixel estão incluídos. Página estática; não precisa instalar pacotes nem compilar.
+Esta é uma nova versão para revisão. A página anterior permanece em `outputs/lina-vercel`.
 
-## Publicar
+## Ver a página
 
-1. Extraia o ZIP.
-2. No GitHub, abra seu repositório (ou crie um) e use **Add file → Upload files**.
-3. Envie a pasta `public` e os arquivos `vercel.json`, `README.md` e `.gitignore` para a raiz do repositório. Não envie apenas o ZIP nem uma pasta extra envolvendo todo o projeto.
-4. Clique em **Commit changes** no GitHub. Se o projeto já estiver conectado à Vercel, acompanhe o novo deploy em **Deployments**. Para publicar pela primeira vez, na Vercel selecione **Add New → Project**, importe esse repositório e clique em **Deploy**.
+Abra `http://127.0.0.1:5174/` enquanto o servidor de prévia estiver funcionando. A versão para publicar usa exatamente os arquivos de `public/`.
 
-Confira se a pasta `public` no GitHub contém `index.html`, `styles.css`, `app.js`, `offer-config.js` e a pasta `assets` com 14 imagens. O arquivo `vercel.json` precisa ficar na raiz do repositório, ao lado de `public`.
+## Arquivos para GitHub e Vercel
 
-Se a Vercel pedir configurações: **Framework Preset: Other**; **Root Directory: raiz do repositório**; **Build Command: vazio**; **Install Command: vazio**; **Output Directory: public**. O arquivo `vercel.json` já configura esses valores. Veja a [documentação oficial da Vercel](https://vercel.com/docs/builds/configure-a-build).
+Extraia o ZIP. Coloque o conteúdo extraído na raiz do repositório, mantendo as pastas:
 
-## Estrutura
+```
+public/
+  index.html
+  styles.css
+  app.js
+  offer-config.js
+  assets/            todas as imagens ficam aqui
+vercel.json
+.gitignore
+README.md
+REVISAO-PT.md
+entrega-bonus/       PDF do novo bônus 01 para adicionar à Hotmart
+```
 
-- `public/index.html`: página.
-- `public/styles.css`: aparência e adaptação ao celular.
-- `public/app.js`: carrosséis, perguntas, links e contador.
-- `public/offer-config.js`: duração do ciclo do contador.
-- `public/assets/`: imagens usadas na página.
-- `vercel.json`: configuração da hospedagem.
+Não coloque as imagens soltas na raiz. Não envie o ZIP como se ele fosse o site. Não crie outra pasta acima de `public/` dentro do repositório.
 
-## Alterar a campanha
+No Vercel, a pasta raiz é a raiz do repositório. O projeto é estático: o `vercel.json` define saída em `public`, sem instalação ou comando de build. Se existirem configurações antigas de outro projeto, confira que o diretório de saída é `public`.
 
-O contador renova automaticamente a cada 24 horas e nunca bloqueia os botões de compra. Ao recarregar, mantém a contagem salva neste navegador; se o ciclo já terminou, começa outro de 24 horas. Funciona também quando o navegador não permite armazenamento local. O topo informa a renovação da oferta. A duração pode ser alterada em `durationHours`, no arquivo `public/offer-config.js`.
+## Oferta
 
-Os links dos planos estão em `public/index.html`. Os preços são US$7,90 para Basic e US$14,90 para Completo.
+- Basic: 100 designs, US$7,90, sem bônus. Hotmart `off=dn5l2k7z`.
+- Complete: 1.000+ designs, US$14,90, quatro bônus. Hotmart `off=c6fxrgcu`.
+- Garantia: 7 dias, ambos os planos.
+- Pixel Meta: `2589111474848514`.
+- Eventos: PageView no carregamento; ViewContent quando a área dos planos entra na tela; InitiateCheckout somente nos links que levam à Hotmart, com valor do plano.
+- Identificação de versão nos eventos: `b-2026-10`. Campanhas recebidas na URL continuam no checkout; sem `src` anterior, usa `lina-lp-b`.
+- Contador: a exibição renova em 24 horas. A compra permanece disponível; o contador não desativa botão nem modifica preço.
 
-O Pixel Meta **2589111474848514** está instalado em `public/index.html`, com PageView ao visitar a página. Os botões de checkout disparam InitiateCheckout em `public/app.js`, com moeda USD e valor 7.90 para Basic ou 14.90 para Completo. Após publicar, confira os eventos na ferramenta Testar Eventos do Gerenciador de Eventos da Meta. O evento Purchase da compra concluída deve ser configurado na Hotmart.
+Depois de aprovar a versão, publique-a e confira os dois preços na Hotmart no país de venda. Não há mudanças automáticas em anúncios, orçamento ou checkout.
 
-A entrega de cada plano na Hotmart precisa corresponder ao que a página promete. O checkout Basic foi verificado por preço, mas seu nome ainda anunciava a coleção completa. Não foi realizada compra de teste.
+## Novo bônus 01
+
+O arquivo `entrega-bonus/party-planner-lina.pdf` tem quatro páginas A4 em inglês: planejamento da festa, checklist de preparação, controle da produção e cronograma. Adicione esse PDF à entrega do Completo na Hotmart antes de publicar a versão que anuncia o bônus. O arquivo está fora de `public/`, para acompanhar o pacote de entrega sem ficar aberto na página de vendas.
+
+A hero usa uma nova imagem de coleção gerada com a ferramenta integrada, otimizada em WebP. O prompt final e as referências estão em `HERO-PROMPT.md`.
